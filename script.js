@@ -4,11 +4,11 @@ var jogadores;
 var acoes;
 var fimDeJogo;
 
-comeco      = function(){
+comeco = function(){
     config();
     evento();
 }
-restart  = function(){
+restart = function(){
     jogadores[0].vencedor=false;
     jogadores[1].vencedor=false;
     espaco =[0,0,0, 0,0,0, 0,0,0];
@@ -16,20 +16,18 @@ restart  = function(){
         parte.innerText = "";
     fimDeJogo = false;
 }
-mudanca		= function(){
+mudanca = function(){
 
     if(temVencedor()){
         console.log(fimDeJogo);
     }
     setMensagem();
 }
-temVencedor  = function(){
+temVencedor = function(){
+
     for(let i = 0 ; i < acoes.length; i++){
         for(let jogador of jogadores){
-            if(espaco[acoes[i][0]]  == jogador.id &&
-                espaco[acoes[i][1]] == jogador.id &&
-                    espaco[acoes[i][2]] == jogador.id){
-                
+            if(espaco[acoes[i][0]]  == jogador.id && espaco[acoes[i][1]] == jogador.id && espaco[acoes[i][2]] == jogador.id){         
                 jogador.vencedor  = true;
                 jogador.pontos    += 1;
                 fimDeJogo       = true;
@@ -53,8 +51,8 @@ temVencedor  = function(){
 evento = function(){
 
     let index = 0;
+    
     for(let parte of uI.partes){
-
         parte.index = index++;
         parte.addEventListener("click",()=>eventoClick(parte));
 
